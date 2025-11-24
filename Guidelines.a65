@@ -9,7 +9,7 @@
 ;                                                                              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;       Label                   OPC     Operand/Arg
+;       Label                   OPC     Operand     ; Comment
 ;  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
                                 JSR     subroutine
@@ -23,20 +23,20 @@
                         regA   .byte    $00
                         args   .word    $0000
         subroutine              
-                                STA     regA    ; Save A register
+                                STA     regA        ; Save A register
 
-                                PLA             ; Save return address
+                                PLA                 ; Save return address
                                 STA     args
                                 PLA
                                 STA     args +1 
 
 
 
-                                LDA     args +1 ; Restore return address
+                                LDA     args +1     ; Restore return address
                                 PHA
                                 LDA     args
                                 PHA
 
-                                LDA     regA    ; Restore A register
+                                LDA     regA        ; Restore A register
 
                                 RTS
