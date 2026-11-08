@@ -1,0 +1,31 @@
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                                                                               ;
+;                                  Standard Library Definitions                                 ;
+;                                                                                               ;
+;       Version: v1.0.0                                                                         ;
+;       Author: Craig Gregory (CJG)                                                             ;
+;                                                                                               ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;
+;   Label           OPC     Operand/Arg(s)
+;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
+
+    V1             .equ     1
+
+
+   .DECLARE    .macro   ver
+
+                   .ifndef  declared
+   
+                       .scope   declared, as=$${as}
+        declared       .equ     ${ver}
+
+                       .if ${ver} == V1
+                           .include "../misc/STDLIB_v1.0.0.lib.a65", as=$${as}, list=$${list}
+                       .endif
+                   .endif
+               .endmacro

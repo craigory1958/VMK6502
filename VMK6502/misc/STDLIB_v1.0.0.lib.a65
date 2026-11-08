@@ -1,0 +1,64 @@
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                                                                               ;
+;                                       Standard Library                                        ;
+;                                                                                               ;
+;       Version: v1.0.0                                                                         ;
+;       Author: Craig Gregory (CJG)                                                             ;
+;                                                                                               ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;
+;   Label           OPC     Operand/Arg(s)
+;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
+
+
+   .JSRWPB     .macro   sub, ra        ; Jump to SubRoutine w/Parameter Block
+
+                    JSR     ${sub}
+                   .word    ${ra} -1   ; Point 1 byte before actual return address
+
+               .endmacro
+
+
+   .RTSWPB     .macro                   ; ReTurn from Subroutine w/Parameter Block
+
+            ; Pull return address from stack, use as pointer to fetch actual return address
+
+            ; Pull return address into X:Y
+
+ 	                PLA                 ; Pull RAP low-byte
+	                TAY
+	                PLA                 ; Pull RAP high-byte
+	                TAX
+
+			; 6502 return addresses on stack are 1 byte before actual return address
+
+	                DEY                 
+	                STY     RTSWPB_rap
+	                BNE     @ne
+	                DEX
+            @ne
+	                STX     RTSWPB_rap +1
+
+			; Push return address on to stack
+
+	                LDY     #$01        
+	                LDA     (RTSWPB_rap), Y    ; High-byte first
+	                PHA
+	                DEY
+	                LDA     (RTSWPB_rap), Y    ; Low-byte second
+	                PHA
+
+	                RTS
+       
+                   .ifndef  RTSWPB_rap
+                       .segment "MPU65XX_ZP"
+
+                       .scope   RTSWPB_rap
+        RTSWPB_rap     .word    $FFFF
+                   .endif
+
+               .endmacro

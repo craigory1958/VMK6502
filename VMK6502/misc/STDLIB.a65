@@ -1,0 +1,9 @@
+;
+;   Label           OPC     Operand/Arg(s)
+;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
+
+xxx                 LDA     #$CC
+def                .equ     $EE
+xyz                .byte    $01, $02, $03 ,$04, $05, $06, $07, $08, $09
+                   

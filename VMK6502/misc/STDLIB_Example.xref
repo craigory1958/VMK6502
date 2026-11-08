@@ -1,0 +1,12 @@
+  .stdl:declared (declared)                           0x01   25 (B.25)        22 (B.22)        24 (B.24)     
+  .stdl:rtswpb_rap (RTSWPB_rap)                       0x00   61 (C.61)        40 (C.40)        44 (C.44)        49 (C.49)        52 (C.52)        57 (C.57)        60 (C.60)        40 (C.40)        44 (C.44)        49 (C.49)        52 (C.52)        57 (C.57)        60 (C.60)     
+  .stdl:v1 (V1)                                       0x01   17 (B.17)        12               25 (B.25)        27 (B.27)        27 (B.27)     
+  @eopb_1e08cb06305b480183374f570d802387 (@eopb)    0x0208   20               17            
+  @ne_35b1fd61f34c4233b41277088f7eeed2 (@ne)        0x0233   43 (C.43)        41 (C.41)     
+  @ne_ce24b030488b4083af7e978fcd11eefd (@ne)        0x0219   43 (C.43)        41 (C.41)     
+  arga (argA)                                       0x0205   18            
+  argb (argB)                                       0x0206   19            
+  def                                                 0xEE    7 (A.7)      
+  mysub (mySub)                                     0x020D   27               17            
+  xxx                                                 0x00    6 (A.6)      
+  xyz                                                 0x02    8 (A.8)      

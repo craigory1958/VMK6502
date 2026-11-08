@@ -1,0 +1,39 @@
+
+
+;
+;   Label           OPC     Operand/Arg(s)
+;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
+											
+               .include  "STDLIB.a65", list=.list
+											
+               .include  "STDLIB.def.a65", as=.STDL, list=.list
+
+                   .STDL:.DECLARE   .STDL:V1, list=.list
+
+
+               .org      $0200
+
+                   .STDL:.JSRWPB    mySub, @eopb, list=.list
+        argA       .byte    $00
+        argB       .word    $FFFF
+        @eopb
+
+                    NOP                 ; Execution returns here
+                    BRK
+
+
+               .align    0x0F
+
+    mySub
+                    NOP                 ; Body of subroutine
+
+                   .STDL:.RTSWPB    list=.list
+
+                    NOP                 ; Body of subroutine
+
+                   .STDL:.RTSWPB    list=.list
+
+
+                    NOP
+
