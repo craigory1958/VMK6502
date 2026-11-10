@@ -29,11 +29,3 @@
                     NOP                 ; Body of subroutine
 
                    .STDL:.RTSWPB    list=.list
-
-                    NOP                 ; Body of subroutine
-
-                   .STDL:.RTSWPB    list=.list
-
-
-                    NOP
-
